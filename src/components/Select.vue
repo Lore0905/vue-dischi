@@ -4,6 +4,7 @@
 <template>
     <div class="music-genre-wrapping">
         <select name="music-genre" id="music-genre" v-model="musicType" @click="$emit('searchClick', musicType)">
+            <option value="All" >All</option>
             <option value="Rock" >Rock</option>
             <option value="Pop">Pop</option>
             <option value="Jazz">Jazz</option>

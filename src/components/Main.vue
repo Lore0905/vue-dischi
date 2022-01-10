@@ -8,7 +8,7 @@
         <div class="container">
             
             <template v-if="!isLoading">
-                <Disco v-for="(item, index) in discoArray" :key="index" :discoObject="item"/>
+                <Disco v-for="(item, index) in filteredArray()" :key="index" :discoObject="item"/>
             </template>
             <template v-else>
                 <div class="fa-3x">
@@ -34,12 +34,28 @@ export default {
         return{
             discoArray: [],
             isLoading: true,
+            musicGenre: "",
         
         }
     },
     methods: {
-        serchMusicType: function (text){
-            console.log(text)
+        serchMusicType: function (musicType){
+            // stampo l'argomento su una variabile
+            this.musicGenre = musicType
+        },
+        filteredArray: function(){
+
+            if (this.musicGenre === 'All'){
+                return this.discoArray
+            }
+
+            // creo un constante dove verrà salvato una copia dell'array (discoArray), ma filtrato.
+            const newDiscoArray = this.discoArray.filter((element) => {
+                return element.genre.toLowerCase().includes(this.musicGenre.toLowerCase())
+            });
+            console.log(newDiscoArray)
+
+            return newDiscoArray
         }
     },
     created: function(){
