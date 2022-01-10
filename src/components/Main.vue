@@ -5,7 +5,7 @@
 
         <div class="container">
             <div v-if="!isLoading" class="select-wrapping">
-                <Select @searchClick="serchMusicType"/>
+                <Select @searchClickMusicGenre="serchMusicType"/>
             </div>
             <template v-if="!isLoading">
                 <Disco v-for="(item, index) in filteredArray()" :key="index" :discoObject="item"/>
