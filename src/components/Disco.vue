@@ -1,6 +1,7 @@
 <template>
         <!-- single disco -->
         <div class="container-wrap-disco">
+
             <!-- img disco --> 
             <div class="img-disco">
                 <img :src="discoObject.poster" :alt="discoObject.title">
@@ -12,6 +13,10 @@
             <!-- author -->
             <div class="author-disco">
                 <span>{{discoObject.author}}</span>
+            </div>
+            <!-- year -->
+            <div class="year-disco">
+                <span>{{discoObject.year}}</span>
             </div>
 
         </div>
@@ -45,8 +50,10 @@ export default {
             text-align: center;
             color: $white-color-text;
             padding: 20px 0px;
+            text-transform: uppercase;
+            font-size: 13px;
         }
-        .author-disco{
+        .author-disco, .year-disco{
             text-align: center;
             color: $grey-color-text;
         }
