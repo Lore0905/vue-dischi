@@ -34,30 +34,31 @@ export default {
 @import '../style/variables.scss';
 
 
-    .container-wrap-disco{
-        width: calc(100% / 5) ;
-        max-width: 200px;
-        min-width: 175px;
-        height: 350px;
-        background-color: $brand_primary_color;
-        padding: 20px;
-        margin: 10px 20px;
+.container-wrap-disco{
+    width: calc(100% / 5) ;
+    max-width: 200px;
+    min-width: 175px;
+    height: 350px;
+    background-color: $brand_primary_color;
+    padding: 20px;
+    margin: 10px 20px;
 
-        .img-disco{
 
-        }
-        .title-disco{
-            text-align: center;
-            color: $white-color-text;
-            padding: 20px 0px;
-            text-transform: uppercase;
-            font-size: 13px;
-        }
-        .author-disco, .year-disco{
-            text-align: center;
-            color: $grey-color-text;
-        }
+    .img-disco{
+
     }
+    .title-disco{
+        text-align: center;
+        color: $white-color-text;
+        padding: 20px 0px;
+        text-transform: uppercase;
+        font-size: 13px;
+    }
+    .author-disco, .year-disco{
+        text-align: center;
+        color: $grey-color-text;
+    }
+}
 
 
 </style>

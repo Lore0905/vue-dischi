@@ -3,7 +3,7 @@
 
 <template>
     <div class="music-genre-wrapping">
-        <select name="music-genre" id="music-genre" v-model="musicType" @click="$emit('searchClick', musicType)">
+        <select name="music-genre" id="music-genre" v-model="musicType" @change="$emit('searchClick', musicType)">
             <option value="All" >All</option>
             <option value="Rock" >Rock</option>
             <option value="Pop">Pop</option>
@@ -18,7 +18,7 @@ export default {
     name: "Select",
     data: function (){
         return {
-            musicType: '',
+            musicType: 'All',
         }
     }
 }
@@ -30,6 +30,9 @@ export default {
     #music-genre{
         width: 100px;
         padding: 5px 0;
+        border-radius: 5px;
+        background-color: lightgrey;
+        color: black;
     }
 }
 

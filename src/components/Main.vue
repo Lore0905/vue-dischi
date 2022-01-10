@@ -1,12 +1,12 @@
 <template>
     <section id="main-section">
 
-        <template v-if="!isLoading">
-            <Select @searchClick="serchMusicType"/>
-        </template>
+        
 
         <div class="container">
-            
+            <div v-if="!isLoading" class="select-wrapping">
+                <Select @searchClick="serchMusicType"/>
+            </div>
             <template v-if="!isLoading">
                 <Disco v-for="(item, index) in filteredArray()" :key="index" :discoObject="item"/>
             </template>
@@ -73,17 +73,23 @@ export default {
 <style scoped lang="scss">
 @import '../style/variables.scss';
 #main-section{
-    padding-top: 10vh;
+
     
     .container{
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        .select-wrapping{
+            padding: 20px;
+        }
 
         .fa-3x{
             font-size: 100px;
         }
     }
+}
+.select-wrapping{
+    width: 100%;
 }
 
 </style>
