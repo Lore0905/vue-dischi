@@ -6,7 +6,7 @@
         <!-- music genre -->
         <div class="music-genre-wrapping">
             <select name="music-genre" id="music-genre" v-model="musicType" @change="$emit('searchClickMusicGenre', musicType)">
-                <option value="All" >All</option>
+                <option value="" >All</option>
                 <option value="Rock" >Rock</option>
                 <option value="Pop">Pop</option>
                 <option value="Jazz">Jazz</option>
@@ -16,8 +16,8 @@
         </div>
         <!-- author name -->
         <div class="music-author-wrapping">
-            <select name="author-name" id="author-name" v-model="musicAuthor" @change="$emit('searchClick', musicAuthor)">
-                <option value="All" >All</option>
+            <select name="author-name" id="author-name" v-model="musicAuthor" @change="$emit('searchClickMusicAuthor', musicAuthor)">
+                <option value="" >All</option>
                 <option value="Bon Jovi">Bon Jov</option>
                 <option value="Queen">Queen</option>
                 <option value="Sting">Sting</option>
@@ -39,8 +39,8 @@ export default {
     name: "Select",
     data: function (){
         return {
-            musicType: 'All',
-            musicAuthor: 'All'
+            musicType: '',
+            musicAuthor: ''
         }
     }
 }

@@ -5,7 +5,7 @@
 
         <div class="container">
             <div v-if="!isLoading" class="select-wrapping">
-                <Select @searchClickMusicGenre="serchMusicType"/>
+                <Select @searchClickMusicGenre="serchMusicType" @searchClickMusicAuthor="sechMusicAuthor"/>
             </div>
             <template v-if="!isLoading">
                 <Disco v-for="(item, index) in filteredArray()" :key="index" :discoObject="item"/>
@@ -35,7 +35,7 @@ export default {
             discoArray: [],
             isLoading: true,
             musicGenre: "",
-        
+            musicAuthor: "",
         }
     },
     methods: {
@@ -43,28 +43,38 @@ export default {
             // stampo l'argomento su una variabile
             this.musicGenre = musicType
         },
+        sechMusicAuthor: function(musicAuthor){
+            // stampo l'argomento su una variabile
+            this.musicAuthor = musicAuthor
+        },
         filteredArray: function(){
-
-            if (this.musicGenre === 'All'){
+            if ((this.musicGenre === '') && (this.musicAuthor === '')){
                 return this.discoArray
             }
 
             // creo un constante dove verrà salvato una copia dell'array (discoArray), ma filtrato.
-            const newDiscoArray = this.discoArray.filter((element) => {
-                return element.genre.toLowerCase().includes(this.musicGenre.toLowerCase())
-            });
-            console.log(newDiscoArray)
+            let newDiscoArray = this.discoArray;
 
+            if (this.musicGenre !== '') {
+                newDiscoArray = newDiscoArray.filter((element) => {
+                    return element.genre === this.musicGenre
+                })
+            }
+            if (this.musicAuthor !== ''){
+                newDiscoArray = newDiscoArray.filter((element) => {
+                    return element.author === this.musicAuthor
+                })
+                
+            }
             return newDiscoArray
         }
     },
+        
     created: function(){
         axios.get('https://flynn.boolean.careers/exercises/api/array/music')
         .then((response) => {
             this.discoArray = response.data.response;
-
             this.isLoading = false
-
         });
     }
 }
@@ -73,7 +83,6 @@ export default {
 <style scoped lang="scss">
 @import '../style/variables.scss';
 #main-section{
-
     
     .container{
         display: flex;
@@ -82,7 +91,6 @@ export default {
         .select-wrapping{
             padding: 20px;
         }
-
         .fa-3x{
             font-size: 100px;
         }
@@ -91,5 +99,4 @@ export default {
 .select-wrapping{
     width: 100%;
 }
-
 </style>
